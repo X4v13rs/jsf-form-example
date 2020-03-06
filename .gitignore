@@ -4,6 +4,12 @@
 # Log file
 *.log
 
+# files to ignore
+.DS_Store
+target/
+.idea
+*.iml
+
 # BlueJ files
 *.ctxt
 
