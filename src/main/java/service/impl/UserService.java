@@ -1,6 +1,7 @@
 package service.impl;
 
 import entity.User;
+import sun.tools.jconsole.AboutDialog;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.io.Serializable;
@@ -19,7 +20,7 @@ public class UserService implements Serializable {
         return names;
     }
 
-    public void addUser(String name, String email) {
-        names.add(new User(name, email));
+    public void addUser(String firstName, String lastName, String dob, String email, String occupation) {
+        names.add(new User(firstName,lastName, dob, email, occupation));
     }
 }

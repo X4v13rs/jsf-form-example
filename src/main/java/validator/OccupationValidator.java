@@ -6,26 +6,26 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@FacesValidator("emailValidator")
-public class EmailValidator implements Validator {
-
-    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\." +
-            "[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*" +
-            "(\\.[A-Za-z]{2,})$";
+@FacesValidator("occupationValidator")
+public class OccupationValidator implements Validator {
+    private List<String> occupationlist = Arrays.asList("Developer", "Witcher", "Prisoner");
 
     @Override
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object value) {
 
-        Matcher matcher = Pattern.compile(EMAIL_PATTERN).matcher(value.toString());
-        if (!matcher.matches()) {
+        if (!occupationlist.contains(value.toString())){
             FacesMessage msg =
-                    new FacesMessage("E-mail validation failed.",
-                            "Invalid E-mail format.");
+                    new FacesMessage("Occupation validation failed.",
+                            "Invalid Occupation.");
             msg.setSeverity(FacesMessage.SEVERITY_INFO);
             throw new ValidatorException(msg);
         }
     }
+
+
 }

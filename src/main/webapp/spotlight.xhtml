@@ -15,12 +15,25 @@
             <p:messages id="msgs" />
 
             <h:panelGrid columns="1" cellpadding="5">
-                <p:outputLabel for="username" value="Username:" />
-                <p:inputText id="username" value="#{spotlightView.username}" required="true" label="Username">
+                <p:outputLabel for="firstname" value="First Name:" />
+                <p:inputText id="firstname" value="#{spotlightView.firstname}" required="true" label="First Name">
                     <f:validateLength minimum="4" />
-                    <p:ajax update="msgusername" event="keyup" />
+                    <p:ajax update="msgfirstname" event="keyup" />
                 </p:inputText>
-                <p:message for="username" id="msgusername" display="icon" />
+                <p:message for="firstname" id="msgfirstname" display="icon" />
+
+                <p:outputLabel for="lastname" value="Last Name:" />
+                <p:inputText id="lastname" value="#{spotlightView.lastname}" required="true" label="Last Name">
+                    <f:validateLength minimum="4" />
+                    <p:ajax update="msglastname" event="keyup" />
+                </p:inputText>
+                <p:message for="lastname" id="msglastname" display="icon" />
+
+                <p:outputLabel for="dob" value="DOB:" />
+                <p:inputText id="dob" value="#{spotlightView.dob}"  label="DOB">
+                    <p:ajax update="msgdob" event="keyup" />
+                </p:inputText>
+                <p:message for="dob" id="msgdob" display="icon" />
 
                 <p:outputLabel for="email" value="Email:" />
                 <p:inputText id="email" value="#{spotlightView.email}" label="email" required="true">
@@ -28,6 +41,13 @@
                     <p:ajax update="msgemail" event="keyup" />
                 </p:inputText>
                 <p:message for="email" id="msgemail" display="icon" />
+
+                <p:outputLabel for="occupation" value="Occupation:" />
+                <p:inputText id="occupation" value="#{spotlightView.occupation}" required="true" label="Occupation">
+                    <f:validator validatorId="occupationValidator" />
+                    <p:ajax update="msgoccupation" event="keyup" />
+                </p:inputText>
+                <p:message for="occupation" id="msgoccupation" display="icon" />
 
             </h:panelGrid>
 

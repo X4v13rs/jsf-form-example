@@ -15,16 +15,38 @@ public class SpotlightView implements Serializable {
     private UserService userService;
 
 
-    private String username;
+    private String firstname;
+
+    private String lastname;
+
+    private String dob;
 
     private String email;
 
-    public String getUsername() {
-        return username;
+    private String occupation;
+
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public String getEmail() {
@@ -35,11 +57,24 @@ public class SpotlightView implements Serializable {
         this.email = email;
     }
 
-    public String save() {
-        userService.addUser(username, email);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("You've registered"));
-        setUsername(null);
-        setEmail(null);
-        return "/hello.xhtml?faces-redirect=true";
+    public String getOccupation() {
+        return occupation;
     }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public String save() {
+        userService.addUser(firstname, lastname, dob, email, occupation);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("You've registered"));
+        setFirstname(null);
+        setLastname(null);
+        setDob(null);
+        setEmail(null);
+        setOccupation(null);
+        return "/datatable.xhtml?faces-redirect=true";
+    }
+
+
 }
